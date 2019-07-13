@@ -1,0 +1,28 @@
+<!-- template-driven approach -->
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off"> <!--AUTOCOMPLETE=off :: disabled browser autofill/autoprediction on web forms-->
+    <!-- add empID needed for update operation -->
+    <input type="hidden" name="EmpID" #EmpID="ngModel" [(ngModel)]="service.formData.EmpID">
+
+    <div class="form-group">
+        <label>Full Name</label>
+        <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.FullName" class="form-control" required>
+        <small class="form-text validation-error" *ngIf="fullName.invalid && fullName.touched">This field is required</small>
+    </div>
+    <div class="form-group">
+        <label>Position</label>
+        <input name="empPosition" #empPosition="ngModel" [(ngModel)]="service.formData.EmpPosition" class="form-control">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Employee Code</label>
+            <input name="empCode" #empCode="ngModel" [(ngModel)]="service.formData.EmpCode" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Mobile</label>
+            <input name="mobile" #mobile="ngModel" [(ngModel)]="service.formData.Mobile" class="form-control">
+        </div>        
+    </div>   
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-success">Submit</button>
+    </div> 
+</form>
